@@ -9,14 +9,14 @@ MTK platforms expose the charging path switch at
 
 | value | behavior |
 |---|---|
-| `0` | charging path enabled — battery charges |
-| `1` | discharge path only — charging stops, battery holds the load |
+| `1` | charging path enabled — battery charges (current negative) |
+| `0` | discharge path only — charging stops, battery holds the load (current positive) |
 
 `service.sh` (runs as root via the KernelSU module system) polls the
 capacity every 30 s:
 
-- capacity **≥ 80%** → `echo 1 > en_power_path` (stop charging)
-- capacity **≤ 60%** → `echo 0 > en_power_path` (resume charging)
+- capacity **≥ 80%** → `echo 0 > en_power_path` (stop charging)
+- capacity **≤ 60%** → `echo 1 > en_power_path` (resume charging)
 
 Verified on Redmi Note 9 5G (MT6853, kernel 4.14.336): charging +396 mA
 with `0`, discharging -280 mA with `1`.
