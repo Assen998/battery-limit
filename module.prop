@@ -1,0 +1,6 @@
+id=battery_charge_limit
+name=Battery Charge Limit (80/60)
+version=v1.0
+versionCode=1
+author=Asen
+description=Keeps battery in the healthy 40-80% range for 24/7 plugged-in use. Stops charging at 80% (en_power_path=1), resumes at 60% (en_power_path=0). MTK-only.
